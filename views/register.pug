@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  form(method="POST" action="/register" name="registerForm")
+    div
+      label(for="username") Username
+      input(type="text" name="username")
+      if errors && errors.username
+        p= errors.username
+    div
+      label(for="password") Password
+      input(type="password" name="password")
+      if errors && errors.password
+        p= errors.password
+    div
+      label(for="passwordConfirm") Confirm Password
+      input(type="password" name="passwordConfirm")
+      if errors && errors.passwordConfirm
+        p= errors.passwordConfirm
+    button(type="submit") Submit

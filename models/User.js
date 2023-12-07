@@ -5,7 +5,6 @@ const UserSchema = new Schema({
 	username: { type: String, required: true, minLength: 3, maxLength: 20 },
 	password: { type: String, required: true, minLength: 6 },
 	member_status: { type: String },
-	recovery_word: { type: String, required: true },
 	isAdmin: { type: Boolean },
 });
 
