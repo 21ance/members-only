@@ -35,7 +35,10 @@ exports.register_post = [
 			errors.array().map((error) => {
 				errorObject[error.path] = error.msg;
 			});
-			return res.render("register", { errors: errorObject });
+			return res.render("register", {
+				errors: errorObject,
+				username: req.body.username,
+			});
 		}
 
 		const user = new User({

@@ -4,7 +4,7 @@ block content
   form(method="POST" action="/register" name="registerForm")
     div
       label(for="username") Username
-      input(type="text" name="username")
+      input(type="text" name="username" value=username?username:"")
       if errors && errors.username
         p= errors.username
     div
