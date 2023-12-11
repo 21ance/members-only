@@ -1,0 +1,13 @@
+extends layout 
+
+block content
+  if currentUser && currentUser.member_status === "member"
+    p You are already a member :D
+  else
+    form(method="POST" action="/membership")
+      div
+        label(for="secret") Secret code
+        input(type="text" name="secret")    
+        if error 
+          p= error
+      button Register as member

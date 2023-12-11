@@ -26,4 +26,10 @@ router.post("/new_message", message_controller.new_message_post);
 
 router.post("/:message/delete", message_controller.delete_message_post);
 
+// member routes
+const user_controller = require("../controllers/userController");
+router.get("/membership", user_controller.membership_get);
+
+router.post("/membership", user_controller.membership_post);
+
 module.exports = router;
