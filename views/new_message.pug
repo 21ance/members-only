@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  form(method="POST" action="/new_message" name="messageForm")
+    div
+      label(for="message_title") Title
+      input(type="text" name="message_title" value=message_title?message_title:"")
+      if errors && errors.message_title
+        p= errors.message_title
+    div
+      label(for="message") Message
+      input(type="text" name="message" value=message?message:"")
+      if errors && errors.message
+        p= errors.message
+    button(type="submit") Submit

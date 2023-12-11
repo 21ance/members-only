@@ -16,4 +16,9 @@ router.post("/login", auth_controller.login_post);
 
 router.get("/logout", auth_controller.logout_get);
 
+// message routes
+const message_controller = require("../controllers/messageController");
+router.get("/new_message", message_controller.new_message_get);
+router.post("/new_message", message_controller.new_message_post);
+
 module.exports = router;
