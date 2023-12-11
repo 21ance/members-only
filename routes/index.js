@@ -1,9 +1,12 @@
 var express = require("express");
 var router = express.Router();
 
-/* GET home page. */
-router.get("/", function (req, res, next) {
-	res.render("index", { title: "Express" });
+const Message = require("../models/message");
+
+// homepage
+router.get("/", async function (req, res, next) {
+	const messages = await Message.find().populate("user").exec();
+	res.render("index", { title: "Express", message_list: messages });
 });
 
 // authentication routes

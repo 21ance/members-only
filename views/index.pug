@@ -9,5 +9,13 @@ block content
 
   hr
   <a href="/new_message">New</a>
-
-
+  hr
+  if message_list
+    each message in message_list
+      div
+        p= message.title
+        p= message.message
+        p= message.date_created
+        p= message.user.username
+      hr
+  
