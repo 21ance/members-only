@@ -6,14 +6,14 @@ router.get("/", function (req, res, next) {
 	res.render("index", { title: "Express" });
 });
 
-// user routes
-const user_controller = require("../controllers/userController");
-router.get("/register", user_controller.register_get);
-router.post("/register", user_controller.register_post);
+// authentication routes
+const auth_controller = require("../controllers/authController");
+router.get("/register", auth_controller.register_get);
+router.post("/register", auth_controller.register_post);
 
-router.get("/login", user_controller.login_get);
-router.post("/login", user_controller.login_post);
+router.get("/login", auth_controller.login_get);
+router.post("/login", auth_controller.login_post);
 
-router.get("/logout", user_controller.logout_get);
+router.get("/logout", auth_controller.logout_get);
 
 module.exports = router;
