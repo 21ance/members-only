@@ -12,10 +12,13 @@ block content
   hr
   if message_list
     each message in message_list
-      div
+      form(method="POST" action=`/${message._id}/delete`)
         p= message.title
         p= message.message
-        p= message.date_created
-        p= message.user.username
+        if currentUser && currentUser.member_status === "member"
+          p= message.date_created
+          p= message.user.username
+        if currentUser && currentUser.isAdmin === true
+          button delete message
       hr
   

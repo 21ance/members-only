@@ -24,4 +24,6 @@ const message_controller = require("../controllers/messageController");
 router.get("/new_message", message_controller.new_message_get);
 router.post("/new_message", message_controller.new_message_post);
 
+router.post("/:message/delete", message_controller.delete_message_post);
+
 module.exports = router;
