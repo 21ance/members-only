@@ -16,4 +16,4 @@ block content
               small posted by: <span class="text-blue-500">#{message.user.username}</span> #{", "}
               small= message.date_created_formatted
             if currentUser && currentUser.isAdmin === true
-              button delete message
+              button(class="block bg-red-500 text-white px-2 py-1 mt-4" rounded) Remove message

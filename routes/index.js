@@ -5,7 +5,10 @@ const Message = require("../models/message");
 
 // homepage
 router.get("/", async function (req, res, next) {
-	const messages = await Message.find().populate("user").exec();
+	const messages = await Message.find()
+		.populate("user")
+		.sort({ date_created: -1 })
+		.exec();
 	res.render("index", { title: "Express", message_list: messages });
 });
 
