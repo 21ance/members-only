@@ -3,7 +3,8 @@ const User = require("../models/user");
 
 exports.membership_get = asyncHandler(async (req, res, next) => {
 	if (!res.locals.currentUser) return res.redirect("/login");
-	res.render("membership", { title: "Membership" });
+	const members = await User.find({ member_status: "member" }).exec();
+	res.render("membership", { title: "Membership", member_list: members });
 });
 
 exports.membership_post = asyncHandler(async (req, res, next) => {
@@ -19,6 +20,6 @@ exports.membership_post = asyncHandler(async (req, res, next) => {
 		password: res.locals.currentUser.password,
 		member_status: "member",
 	});
-	await User.findByIdAndUpdate(res.locals.currentUser._id, user);
+	await User.findByIdAndUpdate(res.locals.currentUser._id, user).exec();
 	res.redirect("/membership");
 });

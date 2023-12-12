@@ -2,12 +2,18 @@ extends layout
 
 block content
   if currentUser && currentUser.member_status === "member"
-    p You are already a member :D
+    main(class="flex flex-col items-center justify-center pt-4 gap-4")
+      h1(class="text-2xl") You <span class="text-blue-500">(#{currentUser.username})</span> are already a <span class="text-blue-500">member</span>!
+      section(class="grid grid-cols-1 justify-items-center")
+        h2(class="col-[1/-1] text-xl") Here are the list of <span class="text-blue-500">members</span>:
+        each member in member_list
+          p(class="text-blue-500")= member.username
+        
   else
-    form(method="POST" action="/membership")
-      div
+    form(method="POST" action="/membership" class="flex-1 flex flex-col justify-center items-center gap-4")
+      div(class="flex flex-col")
         label(for="secret") Secret code
-        input(type="text" name="secret")    
+        input(type="text" name="secret" class="rounded border-black border-2 p-1 min-w-[300px] h-[48px] focus:border-blue-500 focus:outline-none")    
         if error 
-          p= error
-      button Register as member
+          small(class="text-red-500")= error
+      button(type="submit" class="text-white bg-blue-500 rounded w-[300px] py-2") Become a member
