@@ -1,18 +1,6 @@
 extends layout
 
 block content
-  if currentUser
-    p= currentUser.username
-    <a href="/logout">LOG OUT</a>
-  else 
-    <a href="/login">login</a>
-  hr
-  <a href="/register">Register</a>
-  hr
-  <a href="/membership">Become a member</a>
-  hr
-  <a href="/new_message">New</a>
-  hr
   if message_list
     each message in message_list
       form(method="POST" action=`/${message._id}/delete`)

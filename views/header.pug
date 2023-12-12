@@ -1,0 +1,15 @@
+include mixins/headerNav
+
+header(class="py-4 flex flex-col md:flex-row md:justify-between items-center gap-2")
+  a(href="/" class="text-3xl")
+    span(class="text-[#3b82f6]") Members #{" "}
+    span only
+  if currentUser
+    nav(class="flex gap-4")
+      +headerNav("/new_message", "New Message", "images/new_message.svg")
+      +headerNav("/membership", "Membership", "images/membership.svg")
+      +headerNav("/logout", "Logout", "images/logout.svg")
+  else 
+    nav(class="flex gap-4") 
+      +headerNav("/login", "Login", "images/login.svg")
+      +headerNav("/register", "Register", "images/register.svg")
