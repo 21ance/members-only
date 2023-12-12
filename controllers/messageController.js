@@ -3,6 +3,14 @@ const Message = require("../models/message");
 const { body, validationResult } = require("express-validator");
 
 // get
+exports.index = asyncHandler(async (req, res, next) => {
+	const messages = await Message.find()
+		.populate("user")
+		.sort({ date_created: -1 })
+		.exec();
+	res.render("index", { title: "Express", message_list: messages });
+});
+
 exports.new_message_get = asyncHandler(async (req, res, next) => {
 	if (!res.locals.currentUser) return res.redirect("/login");
 	res.render("new_message", {
