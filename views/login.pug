@@ -1,17 +1,17 @@
 extends layout 
 
 block content
-  form(method="POST" action="/login" name="loginForm")
-    div
+  form(method="POST" action="/login" name="loginForm" class="flex-1 flex flex-col justify-center items-center gap-4")
+    div(class="flex flex-col")
       label(for="username") Username
-      input(type="text" name="username" value=username?username:"")
+      input(type="text" name="username" value=username?username:"" class="rounded border-black border-2 p-1 min-w-[300px] h-[48px] focus:border-blue-500 focus:outline-none")
       if errors && errors.username
-        p= errors.username
-    div
+        small(class="text-red-500")= errors.username
+    div(class="flex flex-col")
       label(for="password") Password
-      input(type="password" name="password")
+      input(type="password" name="password" class="rounded border-black border-2 p-1 min-w-[300px] h-[48px] focus:border-blue-500 focus:outline-none")
       if errors && errors.password
-        p= errors.password
-    button(type="submit") Submit
+        small(class="text-red-500")= errors.password
+    button(type="submit" class="text-white bg-blue-500 rounded w-[300px] py-2") Login
     if sessionError
-      p= sessionError.slice(-1)
+      small(class="text-red-500")= sessionError.slice(-1)
