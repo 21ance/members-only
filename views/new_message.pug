@@ -1,15 +1,15 @@
 extends layout
 
 block content
-  form(method="POST" action="/new_message" name="messageForm")
-    div
+  form(method="POST" action="/new_message" name="messageForm" class="flex-1 flex flex-col justify-center items-center gap-4")
+    div(class="flex flex-col")
       label(for="message_title") Title
-      input(type="text" name="message_title" value=message_title?message_title:"")
+      input(type="text" name="message_title" value=message_title?message_title:"" class="rounded border-black border-2 p-1 min-w-[350px] md:min-w-[500px] h-[48px] focus:border-blue-500 focus:outline-none")
       if errors && errors.message_title
-        p= errors.message_title
-    div
+        small(class="text-red-500")= errors.message_title
+    div(class="flex flex-col")
       label(for="message") Message
-      input(type="text" name="message" value=message?message:"")
+      textarea(type="text" rows="4" name="message" class="rounded border-black border-2 p-1 min-w-[350px] md:min-w-[500px] focus:border-blue-500 focus:outline-none resize-none")=message?message:""
       if errors && errors.message
-        p= errors.message
-    button(type="submit") Submit
+        small(class="text-red-500")= errors.message
+    button(type="submit" class="text-white bg-blue-500 rounded min-w-[350px] md:min-w-[500px] py-2") Submit

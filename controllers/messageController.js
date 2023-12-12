@@ -12,10 +12,8 @@ exports.new_message_get = asyncHandler(async (req, res, next) => {
 
 // post
 exports.new_message_post = [
-	body("message_title", "Message title is required")
-		.trim()
-		.isLength({ min: 1 }),
-	body("message", "Message content is required")
+	body("message_title", "Title is required").trim().isLength({ min: 1 }),
+	body("message", "Message must be 1 - 200 characters")
 		.trim()
 		.isLength({ min: 1, max: 200 }),
 	asyncHandler(async (req, res, next) => {
